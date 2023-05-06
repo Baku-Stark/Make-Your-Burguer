@@ -9,7 +9,9 @@
 
 <summary><b>♻️ Primeiros Passos: Criação</b></summary>
 
-* `vue create make_burguer`
+* `vue create make_burguer` (criando o projeto)
+
+* `npm install -D sass-loader node-sass` (instalando o loader do SASS)
 
 * **Configuração:**
 

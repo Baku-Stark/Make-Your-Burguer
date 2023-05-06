@@ -25,11 +25,23 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+  }
+
+  div.main-container{
+    margin: 50px;
+    min-height: 250px;
+
+    h2{
+      font-size: 42px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #222;
+    }
   }
 </style>

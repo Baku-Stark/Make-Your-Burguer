@@ -1,17 +1,22 @@
 <template>
+  <Banner/>
   <div class="main-container">
-    <h2>Home</h2>
+    <h2>Monte o seu burguer</h2>
+    <BurgerForm/>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+  import Banner from '@/components/Banner.vue';
+  import BurgerForm from '@/components/BurgerForm.vue';
 
-  export default defineComponent({
+  document.title = "Make Your Burger"
+
+  export default{
     name: 'HomeView',
-    components: {
-      HelloWorld,
+    components:{
+      Banner,
+      BurgerForm
     },
-  });
+  };
 </script>

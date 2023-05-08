@@ -1,5 +1,14 @@
 <template>
   <div class="main-container">
-    <h2>Area de pedidos</h2>
+    <h2>Pedidos</h2>
   </div>
 </template>
+
+<script lang="ts">
+  document.title = "Faça seu pedido"
+
+  export default{
+    name: 'Pedidos',
+  };
+</script>
+

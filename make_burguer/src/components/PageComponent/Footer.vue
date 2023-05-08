@@ -3,6 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 top-footer">
+                    <h4>
+                        Make Your Burguer &copy; 2023
+                    </h4>
+                </div>
+                <div class="col-12 top-footer">
                     <img class="vue-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" />
                 </div>
                 <hr class="mt-5 mb-5">

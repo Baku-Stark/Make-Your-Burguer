@@ -123,7 +123,38 @@
 </style>
   
 <script lang="ts">
-    export default{
+    import { defineComponent } from "vue";
+    
+    export default defineComponent({
       name: 'BurgerForm',
-    };
+
+      data(){
+        return{
+            paes: null,
+            carnes: null,
+            opcionaisdata: null,
+            nome: null,
+            pao: null,
+            carne: null,
+            opcionais : [],
+            status: "Solicitado",
+            msg: null,
+        }
+      },
+
+      methods:{
+        async getIngredientes(){
+            /*
+                PEGAR OS INGREDIENTES DA API
+            */
+            const req = await fetch("http://127.0.0.1:8000/ingredientes")
+            const data = req.json()
+            console.log(data)
+        }
+      },
+
+      mounted(){
+        this.getIngredientes()
+      }
+    });
   </script>  

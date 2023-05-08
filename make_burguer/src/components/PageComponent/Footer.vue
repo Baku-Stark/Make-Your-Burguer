@@ -175,6 +175,6 @@
 
 <script lang="ts">
 export default {
-    name: "Navbar"
+    name: "Footer"
 }
 </script>

@@ -7,16 +7,30 @@
 </template>
 
 <script lang="ts">
-  import Banner from '@/components/Banner.vue';
-  import BurgerForm from '@/components/BurgerForm.vue';
+    import { defineComponent } from "vue";
+    import Banner from '@/components/Banner.vue';
+    import BurgerForm from '@/components/BurgerForm.vue';
+    
+    export default defineComponent({
+      name: 'HomeView',
 
-  document.title = "Make Your Burger"
+      components:{
+        Banner,
+        BurgerForm
+      },
 
-  export default{
-    name: 'HomeView',
-    components:{
-      Banner,
-      BurgerForm
-    },
-  };
+      methods:{
+        async changeTitle(){
+          /*
+              ALTERAR O TÍTULO DA PÁGINA
+          */
+          
+          document.title = "Make Your Burger"
+        }
+      },
+
+      mounted(){
+        this.changeTitle()
+        }
+      });
 </script>

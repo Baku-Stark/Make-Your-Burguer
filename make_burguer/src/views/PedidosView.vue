@@ -5,10 +5,23 @@
 </template>
 
 <script lang="ts">
-  document.title = "Faça seu pedido"
-
-  export default{
+  import { defineComponent } from "vue";
+  export default defineComponent({
     name: 'Pedidos',
-  };
+
+    methods:{
+        async changeTitle(){
+          /*
+              ALTERAR O TÍTULO DA PÁGINA
+          */
+          
+          document.title = "Faça seu pedido"
+        }
+      },
+
+      mounted(){
+        this.changeTitle()
+      }
+  });
 </script>
 

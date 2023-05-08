@@ -16,6 +16,7 @@ finally:
     data = json.load(open('../db/db.json'))
 
     class API_PROJECT(BaseModel):
-        @app.get('/', status_code=status.HTTP_200_OK)
+        # MainURL: http://127.0.0.1:8000
+        @app.get('/ingredientes', status_code=status.HTTP_200_OK)
         def home():
             return data

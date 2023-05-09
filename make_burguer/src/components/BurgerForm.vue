@@ -20,8 +20,13 @@
                         id="pao"
                         v-model="pao"
                     >
-                        <option value="">Selecione o seu pão</option>
-                        <option value="integral">Integral</option>
+                        <option
+                            v-for="pao in paes"
+                            :key="pao.id"
+                            :value="pao.tipo"
+                        >
+                            {{ pao.tipo }}
+                        </option>
                     </select>
                 </div>
                 <div class="input-container">
@@ -31,20 +36,31 @@
                         id="carne"
                         v-model="carne"
                     >
-                        <option value="">Selecione a sua carne</option>
-                        <option value="1">Picanha</option>
+                        <option
+                            v-for="carne in carnes"
+                            :key="carne.id"
+                            :value="carne.tipo"
+                        >
+                            {{ carne.tipo }}
+                        </option>
                     </select>
                 </div>
                 <div id="opc-container" class="input-container">
                     <label id="opc-title">Escolha os opcionais:</label>
-                    <div class="checkbox-container">
+                    <div
+                        class="checkbox-container"
+                        v-for="opcional in opcionaisdata"
+                        :key="opcional.id"
+                    >
                         <input
                             type="checkbox" 
                             name="opcionais"
-                            v-model="opcionais" 
-                            value="salame"
+                            v-model="opcional.tipo" 
+                            :value="opcional.tipo"
                         >
-                        <span>Salame</span>
+                        <span>
+                            {{ opcional.tipo }}
+                        </span>
                     </div>
                 </div>
                 <div class="input-container">
@@ -137,7 +153,7 @@
             pao: null,
             carne: null,
             opcionais : [],
-            status: "Solicitado",
+            status: "Requested",
             msg: null,
         }
       },
@@ -147,9 +163,21 @@
             /*
                 PEGAR OS INGREDIENTES DA API
             */
-            const req = await fetch("http://127.0.0.1:8000/ingredientes")
-            const data = req.json()
-            console.log(data)
+
+            const req = await fetch("http://localhost:5000/ingredientes")
+
+            if(req.status == 200){
+                const data = await req.json()
+
+                console.log(data)
+                
+                // CONVERTENDO PROXY PARA OBJECT
+                this.paes = JSON.parse(JSON.stringify(data.data.ingredientes.paes))
+
+                this.carnes = JSON.parse(JSON.stringify(data.data.ingredientes.carnes))
+
+                this.opcionaisdata = JSON.parse(JSON.stringify(data.data.ingredientes.opcionais))
+            }
         }
       },
 

@@ -9,7 +9,7 @@ except ModuleNotFoundError:
     os.system('python.exe -m pip install --upgrade pip')
 
 try:
-    from flask_cors import CORS
+    from flask_cors import CORS, cross_origin
 
 except ModuleNotFoundError:
     os.system('pip install -U flask-cors')
@@ -17,12 +17,13 @@ except ModuleNotFoundError:
 finally:
     app = Flask(__name__)
     
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"http://localhost:5000/api/*": {"origins": "*"}})
+    app.config['CORS_HEADERS'] = 'Content-Type'
     # PEGANDO INGREDIENTES DO DOCUMENTO JSON
-    data = json.load(open('../db/db.json'))
+    data = json.load(open('../db/db.json', encoding="utf-8"))
 
-    # http://localhost:5000
-    @app.route('/ingredientes', methods=['GET'])
+    # http://localhost:5000/api//ingredientes
+    @app.route('/api/ingredientes', methods=['GET'])
     def get_ingredientes():
         """
             FUNÇÃO PARA CHAMAR A API.
@@ -31,7 +32,7 @@ finally:
 
             RETURN
             ----------
-            message : str
+            status : str
             data : dic{}
         """
 
@@ -42,6 +43,36 @@ finally:
             }
         )
         response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
+    # http://localhost:5000/api/burgers
+    @app.route('/api/burgers', methods=['POST'])
+    @cross_origin(allow_headers=['Content-Type'])
+    def create_burger():
+        """
+            CRIAR UM NOVO PEDIDO PARA HAMBURGUER.
+
+            ...
+
+            RETURN
+            ----------
+            status : str
+            data : dic{}
+        """
+
+        novo_pedido = request.get_json()
+
+        response = jsonify(
+            {
+                'status': "201_CREATED",
+                'data': novo_pedido
+            }
+        )
+
+        data['burgers'].append(novo_pedido)
+
+        response.headers.add('Access-Control-Allow-Origin', '*')
+
         return response
 
     if __name__ == '__main__':

@@ -2,7 +2,7 @@
     <div>
         <p>Componente de Mensagem</p>
         <div>
-            <form method="post">
+            <form method="post" @submit="createBurger">
                 <div class="input-container">
                     <label for="nome">Nome do cliente:</label>
                     <input
@@ -55,7 +55,7 @@
                         <input
                             type="checkbox" 
                             name="opcionais"
-                            v-model="opcional.tipo" 
+                            v-model="opcionais" 
                             :value="opcional.tipo"
                         >
                         <span>
@@ -64,7 +64,10 @@
                     </div>
                 </div>
                 <div class="input-container">
-                    <input type="submit" value="Criar meu Burger">
+                    <input
+                        type="submit"
+                        value="Criar meu Burger"
+                    >
                 </div>
             </form>
         </div>
@@ -153,7 +156,7 @@
             pao: null,
             carne: null,
             opcionais : [],
-            status: "Requested",
+            status: "Solicitado",
             msg: null,
         }
       },
@@ -164,7 +167,7 @@
                 PEGAR OS INGREDIENTES DA API
             */
 
-            const req = await fetch("http://localhost:5000/ingredientes")
+            const req = await fetch("http://localhost:5000/api/ingredientes")
 
             if(req.status == 200){
                 const data = await req.json()
@@ -178,6 +181,37 @@
 
                 this.opcionaisdata = JSON.parse(JSON.stringify(data.data.ingredientes.opcionais))
             }
+        },
+        async createBurger(e:any){
+            /*
+                ENVIAR O FORMULÁRIO
+            */
+
+            e.preventDefault()
+
+            const data = {
+                nome: this.nome,
+                pao: this.pao,
+                carne: this.carne,
+                opcionais: Array.from(this.opcionais),
+                status: "Solicitado"
+            }
+
+            const dataJSON = JSON.stringify(data)
+
+            const req = await fetch("http://localhost:5000/api/burgers", {
+                method: "POST",
+                mode: "cors",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: dataJSON
+            })
+
+            const res = await req.json()
+
+            console.log(res)
         }
       },
 
@@ -185,4 +219,4 @@
         this.getIngredientes()
       }
     });
-  </script>  
+</script>  

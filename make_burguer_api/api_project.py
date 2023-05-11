@@ -62,18 +62,9 @@ finally:
 
         novo_pedido = request.get_json()
 
-        response = jsonify(
-            {
-                'status': "201_CREATED",
-                'data': novo_pedido
-            }
-        )
-
         data['burgers'].append(novo_pedido)
 
-        response.headers.add('Access-Control-Allow-Origin', '*')
-
-        return response
+        return novo_pedido
 
     if __name__ == '__main__':
         banner_project()

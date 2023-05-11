@@ -172,7 +172,13 @@
             if(req.status == 200){
                 const data = await req.json()
 
-                console.log(data)
+                const statusCDN = '[ API-FLASK ]'
+                const message = '200 - OK'
+                console.log(
+                    `%c ${statusCDN} %c ${message} `, 
+                    'background: #69ACEB; color: #f0eff5; font-weight: bold;',
+                    'background: #f0f8ff; color: #111111; font-weight: bold;'
+                );
                 
                 // CONVERTENDO PROXY PARA OBJECT
                 this.paes = JSON.parse(JSON.stringify(data.data.ingredientes.paes))
@@ -210,6 +216,14 @@
             })
 
             const res = await req.json()
+
+            const statusCDN = '[ CREATED ]'
+            const message = '201 - CREATED'
+            console.log(
+                `%c ${statusCDN} %c ${message} `, 
+                'background: #2112fc; color: #f0eff5; font-weight: bold;',
+                'background: #f0f8ff; color: #111111; font-weight: bold;'
+            );
 
             console.log(res)
         }

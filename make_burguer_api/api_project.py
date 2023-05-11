@@ -54,6 +54,11 @@ finally:
 
             ...
 
+            VARIABLES
+            ----------
+            novo_pedido : dic{}
+                    o novo pedido do cliente em json.
+
             RETURN
             ----------
             status : str
@@ -64,7 +69,14 @@ finally:
 
         data['burgers'].append(novo_pedido)
 
-        return novo_pedido
+        response = jsonify(
+            {
+                'status': "200_OK",
+                'data': novo_pedido
+            }
+        )
+
+        return response
 
     if __name__ == '__main__':
         banner_project()

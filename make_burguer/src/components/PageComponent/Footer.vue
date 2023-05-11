@@ -81,19 +81,7 @@
                 <hr class="mt-5 mb-5">
                 <div class="col-12 bot-footer">
                     <p>
-                        Pokémon é uma franquia de mídia que pertence a 
-                        <strong>
-                            <a href="https://www.pokemon.com/br/" target="_blank">
-                                The Pokémon Company
-                            </a>
-                        </strong>
-                        , tendo sido criada por 
-                        <strong>
-                            <a href="https://pt.wikipedia.org/wiki/Satoshi_Tajiri" target="_blank">
-                                Satoshi Tajiri
-                            </a>
-                        </strong> 
-                        em 1995. Ela é centrada em criaturas ficcionais chamadas "Pokémon", que os seres humanos capturam e os treinam para lutarem entre si com seus ataques de diversos tipos.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam, minima perspiciatis voluptas sit quae eos nisi blanditiis excepturi tenetur doloremque impedit exercitationem dolore voluptates aspernatur, dolores minus, iste adipisci.
                     </p>
                 </div>
             </div>

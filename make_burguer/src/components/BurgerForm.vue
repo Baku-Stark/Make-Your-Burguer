@@ -224,7 +224,7 @@
                 'background: #f0f8ff; color: #111111; font-weight: bold;'
             );
 
-            window.alert('Pedido criado com')
+            window.alert('Pedido criado com sucesso!!!')
         }
       },
 

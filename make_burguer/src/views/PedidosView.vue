@@ -7,7 +7,31 @@
           :key="req.id"
         >
           <div class="card-body-request">
-            {{ req.nome }}
+            <div class="card-header-request">
+              <h4>{{ req.nome }}</h4>
+            </div>
+            <div class="card-section-request">
+                <ul>
+                  <li>{{ req.pao }}</li>
+                  <li>{{ req.carne }}</li>
+                  <li>
+                    <details>
+                      <summary>Opcionais</summary>
+                      <p
+                        v-for="opc of req.opcionais"
+                        :key="opc"
+                      >
+                        {{ opc }}
+                      </p>
+                    </details>
+                  </li>
+                </ul>
+            </div>
+            <div class="card-footer-request">
+                <p>
+                  Status: <span>{{ req.status }}</span>
+                </p>
+            </div>
           </div>
         </div>
     </div>
@@ -32,6 +56,53 @@
       margin: 5px;
       border-radius: 15px;
       background-color: #111111;
+      @include GridLayout-Columns(repeat(1, 1fr));
+
+      div.card-header-request, 
+      div.card-section-request,
+      div.card-footer-request{
+        padding: 10px;
+      }
+
+      div.card-header-request{
+        text-align: center;
+
+        h4{
+          color: #FCB403;
+        }
+      }
+
+      div.card-section-request{
+        ul{
+          list-style: none;
+
+          li{
+            color: #fac235;
+
+            details summary{
+              font-weight: bold;
+            }
+
+            details p{
+              color: #fff3d5;
+              margin-bottom: 0 !important;
+              margin-left: 5vw;
+            }
+          }
+        }
+      }
+
+      div.card-footer-request{
+        p{
+          color: #f0f8ff;
+          font-weight: bold;
+          text-align: center;
+
+          span{
+            color: #FCB403;
+          }
+        }
+      }
     }
   }
 </style>
@@ -72,17 +143,9 @@
             'background: #69ACEB; color: #f0eff5; font-weight: bold;',
             'background: #f0f8ff; color: #111111; font-weight: bold;'
           );
-
-          console.log(data.data.burgers)
-
-          for(const request of data.data.burgers){
-            console.log(request)
-          }
                 
           // CONVERTENDO PROXY PARA OBJECT
           this.request = JSON.parse(JSON.stringify(data.data.burgers))
-
-          console.log(this.request)
         }
       }
     },

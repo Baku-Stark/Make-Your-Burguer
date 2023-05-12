@@ -42,7 +42,9 @@ finally:
                 'data': data
             }
         )
+
         response.headers.add('Access-Control-Allow-Origin', '*')
+        
         return response
 
     # http://localhost:5000/api/burgers

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <p>Componente de Mensagem</p>
         <div>
             <form method="post" @submit="createBurger">
                 <div class="input-container">
@@ -225,7 +224,7 @@
                 'background: #f0f8ff; color: #111111; font-weight: bold;'
             );
 
-            console.log(res)
+            window.alert('Pedido criado com')
         }
       },
 
